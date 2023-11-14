@@ -96,7 +96,7 @@ export const updateStudent = asyncHandler(async (req, res) => {
   const { name, roll, department, location, gender, age } = req.body;
 
   //get books id from body
-  const { bookId } = req.body;
+  //const { bookId } = req.body;
 
   // update student
   const data = await Student.findByIdAndUpdate(
