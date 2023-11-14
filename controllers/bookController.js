@@ -83,6 +83,11 @@ export const updateBook = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const { name } = req.body;
 
+  // validate data
+  if (!name) {
+    return res.status(400).json({ message: "Book name is required" });
+  }
+
   // update book
   const data = await Book.findByIdAndUpdate(
     id,

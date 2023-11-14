@@ -13,6 +13,9 @@ export const createStudent = asyncHandler(async (req, res) => {
   // get data
   const { name, roll, password } = req.body;
 
+  //  // get data
+  //  const { name, roll, department, location, gender, age } = req.body;
+
   // validate data
   if (!name || !roll || !password) {
     return res.status(400).json({ message: "All fields are required" });
@@ -28,13 +31,13 @@ export const createStudent = asyncHandler(async (req, res) => {
   });
 
   //  create jwt
-  const token = jwt.sign({ name, roll }, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: process.env.ACCESS_TOKEN_EXPIRE_IN,
-  });
+  // const token = jwt.sign({ name, roll }, process.env.ACCESS_TOKEN_SECRET, {
+  //   expiresIn: process.env.ACCESS_TOKEN_EXPIRE_IN,
+  // });
 
   res
     .status(200)
-    .json({ message: "Student created successful", student: data, token });
+    .json({ message: "Student created successful", student: data });
 });
 
 /**
@@ -94,6 +97,11 @@ export const updateStudent = asyncHandler(async (req, res) => {
 
   // get data
   const { name, roll, department, location, gender, age } = req.body;
+
+  // validate data
+  if (!name || !roll || !password) {
+    return res.status(400).json({ message: "All fields are required" });
+  }
 
   //get books id from body
   //const { bookId } = req.body;
